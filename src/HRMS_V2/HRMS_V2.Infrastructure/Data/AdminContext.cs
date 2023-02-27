@@ -3,6 +3,7 @@ using HRMS_V2.Core.Entities;
 using HRMS_V2.Core.Entities.Base;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace HRMS_V2.Infrastructure.Data;
@@ -29,7 +30,7 @@ public class AdminContext : IdentityDbContext<AdminUser, AdminRole, int>
 
         modelBuilder.RegisterConvention();
 
-        modelBuilder.HasDefaultSchema("public");
+       // modelBuilder.HasDefaultSchema("public");
 
         base.OnModelCreating(modelBuilder);
 
@@ -134,14 +135,14 @@ static class AdminContextConfigurations
     }
 }
 
-//public class AdminContextFactory : IDesignTimeDbContextFactory<AdminContext>
-//{
-//    public AdminContext CreateDbContext(string[] args)
-//    {
-//        var builder = new DbContextOptionsBuilder<AdminContext>();
-//        builder.UseSqlServer(
-//                "Server=ATUL-TECH\\MSSQLSERVER1;Database=HRMS_V2;Trusted_Connection=True;")
-//            .UseLowerCaseNamingConvention();
-//        return new AdminContext(builder.Options);
-//    }
-//}
+public class AdminContextFactory : IDesignTimeDbContextFactory<AdminContext>
+{
+    public AdminContext CreateDbContext(string[] args)
+    {
+        var builder = new DbContextOptionsBuilder<AdminContext>();
+        builder.UseSqlServer(
+                "Server=ATUL-TECH\\MSSQLSERVER1;Database=HRMS_V2;User Id=sa;password=sa@123;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=False;")
+            .UseLowerCaseNamingConvention();
+        return new AdminContext(builder.Options);
+    }
+}

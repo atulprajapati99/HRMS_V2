@@ -200,3 +200,8 @@ C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\obj\Debug\net7.0\refint\HRMS_V2.API
 C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\obj\Debug\net7.0\HRMS_V2.API.pdb
 C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\obj\Debug\net7.0\HRMS_V2.API.genruntimeconfig.cache
 C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\obj\Debug\net7.0\ref\HRMS_V2.API.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\bin\Debug\net7.0\Humanizer.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.API\bin\Debug\net7.0\System.CodeDom.dll
