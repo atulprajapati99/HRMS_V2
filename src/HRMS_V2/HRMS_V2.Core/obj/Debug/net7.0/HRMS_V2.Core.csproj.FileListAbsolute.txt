@@ -1,0 +1,24 @@
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\bin\Debug\net7.0\HRMS_V2.Core.deps.json
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\bin\Debug\net7.0\HRMS_V2.Core.dll
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\bin\Debug\net7.0\HRMS_V2.Core.pdb
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.csproj.AssemblyReference.cache
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.AssemblyInfoInputs.cache
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.AssemblyInfo.cs
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.csproj.CoreCompileInputs.cache
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.dll
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\refint\HRMS_V2.Core.dll
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.pdb
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\ref\HRMS_V2.Core.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\bin\Debug\net7.0\HRMS_V2.Core.deps.json
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\bin\Debug\net7.0\HRMS_V2.Core.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\bin\Debug\net7.0\HRMS_V2.Core.pdb
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.csproj.AssemblyReference.cache
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.AssemblyInfoInputs.cache
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.AssemblyInfo.cs
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.csproj.CoreCompileInputs.cache
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\refint\HRMS_V2.Core.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\HRMS_V2.Core.pdb
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Core\obj\Debug\net7.0\ref\HRMS_V2.Core.dll

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "rRNrK2MF6Q31zABgz11v5JKJK4LEpBnd5nPqDnV4ZQ8=",
+  "Source": "HRMS_V2.API",
+  "BasePath": "_content/HRMS_V2.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMS_V2.API", "HRMS_V2.API\HRMS_V2.API.csproj", "{F2338317-F5A0-4743-A4F7-D6575B56B11E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMS_V2.Application", "HRMS_V2.Application\HRMS_V2.Application.csproj", "{954936FD-1D07-4B95-A46D-D268497A3211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMS_V2.Core", "HRMS_V2.Core\HRMS_V2.Core.csproj", "{6E468AA6-8C58-4C4C-9B37-AAA2BF31E197}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMS_V2.Infrastructure", "HRMS_V2.Infrastructure\HRMS_V2.Infrastructure.csproj", "{D7F1FB34-FF4C-4944-BC86-5AA189BFCFB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2338317-F5A0-4743-A4F7-D6575B56B11E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2338317-F5A0-4743-A4F7-D6575B56B11E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2338317-F5A0-4743-A4F7-D6575B56B11E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2338317-F5A0-4743-A4F7-D6575B56B11E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{954936FD-1D07-4B95-A46D-D268497A3211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{954936FD-1D07-4B95-A46D-D268497A3211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{954936FD-1D07-4B95-A46D-D268497A3211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{954936FD-1D07-4B95-A46D-D268497A3211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E468AA6-8C58-4C4C-9B37-AAA2BF31E197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E468AA6-8C58-4C4C-9B37-AAA2BF31E197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E468AA6-8C58-4C4C-9B37-AAA2BF31E197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E468AA6-8C58-4C4C-9B37-AAA2BF31E197}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7F1FB34-FF4C-4944-BC86-5AA189BFCFB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7F1FB34-FF4C-4944-BC86-5AA189BFCFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7F1FB34-FF4C-4944-BC86-5AA189BFCFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7F1FB34-FF4C-4944-BC86-5AA189BFCFB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

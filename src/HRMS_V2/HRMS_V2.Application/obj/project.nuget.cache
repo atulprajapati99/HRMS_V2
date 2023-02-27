@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "QqQmeMSoeYOW52B2vRmRBUEr7aJ6vKE+VJh/MBpA0xKPesI+rUPSjM3tJGujcvCb5aDZ4XcocguWRKupE49z4w==",
+  "success": true,
+  "projectFilePath": "C:\\WebzLabz Data\\src\\src\\HRMS_V2\\HRMS_V2.Application\\HRMS_V2.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Atul\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

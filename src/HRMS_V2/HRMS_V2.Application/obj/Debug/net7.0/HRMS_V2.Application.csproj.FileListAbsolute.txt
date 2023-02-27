@@ -1,0 +1,24 @@
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\bin\Debug\net7.0\HRMS_V2.Application.deps.json
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\bin\Debug\net7.0\HRMS_V2.Application.dll
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\bin\Debug\net7.0\HRMS_V2.Application.pdb
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.csproj.AssemblyReference.cache
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.AssemblyInfoInputs.cache
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.AssemblyInfo.cs
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.csproj.CoreCompileInputs.cache
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.dll
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\refint\HRMS_V2.Application.dll
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.pdb
+D:\HRMS_V2_Api\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\ref\HRMS_V2.Application.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\bin\Debug\net7.0\HRMS_V2.Application.deps.json
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\bin\Debug\net7.0\HRMS_V2.Application.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\bin\Debug\net7.0\HRMS_V2.Application.pdb
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.csproj.AssemblyReference.cache
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.AssemblyInfoInputs.cache
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.AssemblyInfo.cs
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.csproj.CoreCompileInputs.cache
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\refint\HRMS_V2.Application.dll
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\HRMS_V2.Application.pdb
+C:\WebzLabz Data\src\src\HRMS_V2\HRMS_V2.Application\obj\Debug\net7.0\ref\HRMS_V2.Application.dll

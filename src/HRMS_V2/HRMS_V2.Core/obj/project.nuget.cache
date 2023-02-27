@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "dFcopLgD7ipwGlddCSqIjnVsgvPKAZ2XNUWig8URBgiqii+VtH/Rk6jBmZTHs1UL2+4JxJr73nqktjxlluIjvw==",
+  "success": true,
+  "projectFilePath": "C:\\WebzLabz Data\\src\\src\\HRMS_V2\\HRMS_V2.Core\\HRMS_V2.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.3\\microsoft.aspnetcore.cryptography.internal.7.0.3.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.3\\microsoft.aspnetcore.cryptography.keyderivation.7.0.3.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.identity.core\\7.0.3\\microsoft.extensions.identity.core.7.0.3.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.identity.stores\\7.0.3\\microsoft.extensions.identity.stores.7.0.3.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.options\\7.0.1\\microsoft.extensions.options.7.0.1.nupkg.sha512",
+    "C:\\Users\\Atul\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
