@@ -1,16 +1,18 @@
-using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
 using HRMS_V2.Core.Configuration;
 using HRMS_V2.Core.Entities;
 using HRMS_V2.Core.Repositories.Base;
+using HRMS_V2.Infrastructure.Authorization;
 using HRMS_V2.Infrastructure.Data;
 using HRMS_V2.Infrastructure.Repository.Base;
+using HRMS_V2.Infrastructure.Securiy;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using NSwag;
 using NSwag.Generation.Processors.Security;
@@ -19,10 +21,11 @@ namespace HRMS_V2.API.Customization;
 
 public static class ServiceConfig
 {
-    public static IServiceCollection AddCustomAuthentication(this IServiceCollection services ,  IConfiguration configuration)
+    public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
         try
         {
+            var securityTokens = configuration.GetSection("Tokens").Get<Tokens>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -32,12 +35,12 @@ public static class ServiceConfig
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = configuration.GetRequiredSection("Tokens:Issuer").Value,
-                        ValidAudience = configuration.GetRequiredSection("Tokens:Audience").Value,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetRequiredSection("Tokens:SecretKey").Value))
+                        ValidIssuer = securityTokens.Issuer,
+                        ValidAudience = securityTokens.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityTokens.Key))
                     };
                 });
-            
+
             return services;
         }
         catch (Exception ex)
@@ -74,7 +77,6 @@ public static class ServiceConfig
                 options.JsonSerializerOptions.MaxDepth = 32;
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
-
         return services;
     }
 
@@ -82,27 +84,27 @@ public static class ServiceConfig
     {
         services.AddOpenApiDocument(document =>
         {
-            // configure OpenAPI document options
-            document.DocumentName = "Authorization";
-            document.Title = "My API v1";
-            document.Description = "Type into the textbox: Bearer {your JWT token}.";
+            document.Title = "HRMS API";
             document.Version = "v1";
-            document.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT Token",
-                new OpenApiSecurityScheme
-                {
-                    Type = OpenApiSecuritySchemeType.ApiKey,
-                    Name = "Authorization",
-                    Description = "Enter JWT Bearer token",
-                    In = OpenApiSecurityApiKeyLocation.Header
-                }));
-            document.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT Token"));
+
+            // Configure JWT authentication for the OpenAPI document generator
+            document.AddSecurity("bearer", Enumerable.Empty<string>(), new OpenApiSecurityScheme
+            {
+                Type = OpenApiSecuritySchemeType.Http,
+                Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                Name = "Authorization",
+                In = OpenApiSecurityApiKeyLocation.Header,
+                Scheme = "bearer",
+            });
+
+            document.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("bearer"));
         });
+
         return services;
     }
 
     public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
         services
             .AddEntityFrameworkSqlServer()
         .AddDbContext<AdminContext>(options =>
@@ -143,11 +145,7 @@ public static class ServiceConfig
         services
             .AddMvc()
             //.AddFluentValidation(fv => { fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false; })
-            // .AddNewtonsoftJson(options =>
-            // {
-            //     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            //     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            // })
+
             .AddControllersAsServices();
 
         services.AddCors(options =>
@@ -163,14 +161,12 @@ public static class ServiceConfig
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         services.AddAutoMapper(typeof(Program));
-        
+
         var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(p => p.FullName != null
-                                                                            && !p.FullName.StartsWith("Microsoft")
-                                                                            && !p.FullName.StartsWith("System")).ToArray();
-        services.AddMediatR(configuration =>
-        {
-            configuration.RegisterServicesFromAssemblies(assemblies);
-        });
+                                                                           && !p.FullName.StartsWith("Microsoft")
+                                                                           && !p.FullName.StartsWith("System")).ToArray();
+
+        services.AddMediatR(assemblies);
 
         services.Configure<CookiePolicyOptions>(options =>
         {
@@ -180,8 +176,45 @@ public static class ServiceConfig
         });
 
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-        
+
         return services;
     }
-    
+
+    public static IServiceCollection SeedDatabase(this IServiceCollection services)
+    {
+        var sp = services.BuildServiceProvider();
+        using (var scope = sp.CreateScope())
+        {
+            var dbService = scope.ServiceProvider;
+            try
+            {
+                var context = dbService.GetRequiredService<AdminContext>();
+                context.Database.Migrate();
+                context.Database.EnsureCreated();
+            }
+            catch (Exception ex)
+            {
+                var logger = dbService.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occurred seeding the DB.");
+            }
+        }
+
+        return services;
+    }
+
+    public static IServiceCollection AddSecurity(this IServiceCollection services)
+    {
+        services
+              .AddMvcCore()
+              .AddAuthorization(options =>
+              {                  
+                  options.AddPolicy(AuthorizationPolicies.ReadHolidayRequirement, policyBuilder => policyBuilder.AddRequirements(new ReadHolidayRequirement()));
+                  options.AddPolicy(AuthorizationPolicies.ManageHolidayRequirement, policyBuilder => policyBuilder.AddRequirements(new ManageHolidaysRequirement()));                  
+              });
+
+        services.AddSingleton<IAuthorizationHandler, ManageHolidaysRequirementHandler>();
+        services.AddSingleton<IAuthorizationHandler, ReadHolidaysRequirementHandler>();
+
+        return services;
+    }
 }

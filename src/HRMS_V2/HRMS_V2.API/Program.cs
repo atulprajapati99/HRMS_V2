@@ -1,42 +1,29 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using HRMS_V2.API.Application.Middlewares;
 using HRMS_V2.API.Customization;
-using HRMS_V2.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
+using HRMS_V2.API.Ioc;
+using HRMS_V2.Application.IOC;
+using HRMS_V2.Infrastructure.IOC;
 
 var builder = WebApplication.CreateBuilder(args);
-// builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-//     .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true, reloadOnChange: true)
-//     .AddEnvironmentVariables()
-//     .Build();
 
-// Add servics to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCustomMvc();
 builder.Services.AddCustomDbContext(builder.Configuration);
 builder.Services.AddCustomIdentity();
 builder.Services.AddCustomSwagger();
+builder.Services.AddSecurity();
 builder.Services.AddCustomConfiguration(builder.Configuration);
 builder.Services.AddCustomAuthentication(builder.Configuration);
+builder.Services.SeedDatabase();
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new MediatorModule()));
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new InfrastructureModule()));
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new ApplicationModule()));
 
 var app = builder.Build();
-
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        var context = services.GetRequiredService<AdminContext>();
-        context.Database.Migrate();
-        context.Database.EnsureCreated();
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred seeding the DB.");
-    }
-}
-
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();

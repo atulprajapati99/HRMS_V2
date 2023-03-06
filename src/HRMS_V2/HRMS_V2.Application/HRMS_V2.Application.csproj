@@ -3,15 +3,19 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
       <PackageReference Include="AutoMapper" Version="12.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="IoC" />
+      <ProjectReference Include="..\HRMS_V2.Core\HRMS_V2.Core.csproj" />
+      <ProjectReference Include="..\HRMS_V2.Infrastructure\HRMS_V2.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

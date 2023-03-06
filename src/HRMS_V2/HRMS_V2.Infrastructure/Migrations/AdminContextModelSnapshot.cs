@@ -85,20 +85,18 @@ namespace HRMSV2.Infrastructure.Migrations
                         .HasColumnName("email_confirmed");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("first_name");
 
-                    b.Property<bool>("IsWorking")
+                    b.Property<bool>("IsEnable")
                         .HasColumnType("bit")
-                        .HasColumnName("is_working");
+                        .HasColumnName("is_enable");
 
                     b.Property<DateTime>("LastLoginTime")
                         .HasColumnType("datetime2")
                         .HasColumnName("last_login_time");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("last_name");
 
@@ -159,27 +157,113 @@ namespace HRMSV2.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("HRMS_V2.Core.Entities.Employee", b =>
+            modelBuilder.Entity("HRMS_V2.Core.Entities.Holiday", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("first_name");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("LastName")
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("created_by");
+
+                    b.Property<string>("CreatedByName")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("created_by_name");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_date");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("date");
+
+                    b.Property<string>("Day")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("last_name");
+                        .HasColumnName("day");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("description");
+
+                    b.Property<int?>("ModifiedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("modified_by");
+
+                    b.Property<string>("ModifiedByName")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("modified_by_name");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("modified_date");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("RecordStatus")
+                        .HasColumnType("char(1)")
+                        .HasColumnName("record_status");
 
                     b.HasKey("Id")
-                        .HasName("pk_employee");
+                        .HasName("pk_holiday");
 
-                    b.ToTable("Employee", (string)null);
+                    b.ToTable("Holiday", (string)null);
+                });
+
+            modelBuilder.Entity("HRMS_V2.Core.Entities.Permissions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("created_by");
+
+                    b.Property<string>("CreatedByName")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("created_by_name");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_date");
+
+                    b.Property<int?>("ModifiedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("modified_by");
+
+                    b.Property<string>("ModifiedByName")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("modified_by_name");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("modified_date");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("RecordStatus")
+                        .HasColumnType("char(1)")
+                        .HasColumnName("record_status");
+
+                    b.HasKey("Id")
+                        .HasName("pk_permissions");
+
+                    b.ToTable("Permissions", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

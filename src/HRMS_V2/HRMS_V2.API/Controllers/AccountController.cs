@@ -1,109 +1,63 @@
 ﻿using HRMS_V2.API.Requests;
-using HRMS_V2.Core.Configuration;
-using HRMS_V2.Core.Entities;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+using HRMS_V2.Application.Models;
+using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+using System.Net;
 
 namespace HRMS_V2.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AccountController : ControllerBase
     {
-        private readonly AdminSettings _AdminSettings;
-        private readonly SignInManager<AdminUser> _signInManager;
-        private readonly UserManager<AdminUser> _userManager;
+        private readonly IMediator _mediator;
 
-        public AccountController(SignInManager<AdminUser> signInManager,
-         UserManager<AdminUser> userManager,
-         IOptions<AdminSettings> options)
+        public AccountController(IMediator mediator)
         {
-            _signInManager = signInManager;
-            _userManager = userManager;
-            _AdminSettings = options.Value;
+            _mediator = mediator;
         }
 
         [Route("[action]")]
         [HttpPost]
-        public async Task<IActionResult> CreateToken([FromBody] LoginRequest request)
+        [ProducesResponseType(typeof(UserModel), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UserModel>> AddUserAsync(AddUserRequest request)
         {
-            try
-            {
-                var user = await _userManager.FindByEmailAsync(request.Email);
+            var result = await _mediator.Send(request);
 
-                if (user != null)
-                {
-                    var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
-
-                    if (result.Succeeded)
-                    {
-                        // Create the token
-                        var claims = new[]
-                        {
-                            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                            new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
-                        };
-
-                        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_AdminSettings.Tokens.Key));
-                        var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-                        var token = new JwtSecurityToken(
-                          _AdminSettings.Tokens.Issuer,
-                          _AdminSettings.Tokens.Audience,
-                          claims,
-                          expires: DateTime.Now.AddMinutes(30),
-                          signingCredentials: signingCredentials);
-
-                        var results = new
-                        {
-                            token = new JwtSecurityTokenHandler().WriteToken(token),
-                            expiration = token.ValidTo
-                        };
-
-                        return Created("", results);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-
-            return Unauthorized();
+            return Ok(result);
         }
 
         [Route("[action]")]
         [HttpPost]
-        public async Task<IActionResult> Register(UserRegistrationRequest request)
+        [ProducesResponseType(typeof(RoleModel), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<RoleModel>> AddRoleAsync(AddRoleRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var result = await _mediator.Send(request);
 
-            var user = new AdminUser
-            {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Email = request.Email          
-            };
-            var result = await _userManager.CreateAsync(user, request.Password);
+            return Ok(result);
+        }
 
-            if (!result.Succeeded)
-            {
-                return BadRequest(result.Errors);
-            }
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<bool>> AddToRoleAsync(AddUserToRoleRequest request)
+        {
+            var result = await _mediator.Send(request);
 
-            request.Password = null;
-            return Created("", request);
+            return Ok(result);
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<bool>> AddRoleClaimsAsyc(AddRoleToClaimRequest request)
+        {
+            var result = await _mediator.Send(request);
+
+            return Ok(result);
         }
     }
 }
